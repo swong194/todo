@@ -33,5 +33,18 @@ RSpec.describe User, :type => :model do
         )
       }.to change { @user.tasks.count }.by(1)
     end
+
+    it "has many assigned tasks" do
+      expect {
+        u = @user.tasks.create(
+          board_id: @user.boards.first.id,
+          category_id: @user.boards.first.categories.first.id,
+          title: Faker::Lorem.sentence,
+          description: Faker::Lorem.paragraph,
+          due_date: Time.now + 5.days,
+          assignee_id: @user.id
+        )
+      }.to change { @user.assigned_tasks.count }.by(1)
+    end
   end
 end
