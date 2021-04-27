@@ -29,7 +29,7 @@ params: {
 
 ### Returns a user's boards with offset ###
 
-GET  '/boards/:id'
+GET '/boards/:id'
 
 ### Returns a board with the corresponding id ###
 
@@ -39,17 +39,69 @@ params: {
   user_id: 1
 }
 
-### Creates a board with name and author as 'user_id' ###
+### Creates a board with name ###
 ```
 
 ## Category
 ```
-path: '/categories'
+GET '/categories'
+params: {
+  board_id: 1
+}
+
+### Returns a board's categories ###
+
+GET '/categories/:id
+
+### Returns a category with the corresponding id ###
+
+POST '/categories'
+params: {
+  name: 'My category',
+  board_id: 1
+}
+
+### Creates a category for a board ###
 ```
 
 ## Task
 ```
-path: '/tasks'
+GET '/tasks'
+params: {
+  user_id: 1,
+  assigned: true/false
+}
+
+### Returns a user's assigned tasks, or tasks user has authored ###
+
+GET '/tasks/:id'
+
+### Returns a task with the corresponding id ###
+
+POST '/tasks'
+params: {
+  user_id: 1,
+  title: 'My urgent task',
+  description: 'I have complete this asap',
+  board_id: 1,
+  category_id: 1,
+  due_date: '2021-04-27'
+  assignee_id: 1
+}
+
+### Creates a task ###
+
+PUT '/tasks/:id'
+params: {
+  title: 'I can put off this task',
+  description: 'This task is no longer urgent',
+  board_id: 1,
+  category_id: 1,
+  due_date: '2022-04-27'
+  assignee_id: 1
+}
+
+### Updates a task ###
 ```
 
 
